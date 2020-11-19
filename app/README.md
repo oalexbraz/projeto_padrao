@@ -1,0 +1,1 @@
+Dada a necessidade de um aplicativo
