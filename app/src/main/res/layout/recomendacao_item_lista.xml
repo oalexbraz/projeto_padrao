@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="@+id/recomendacao_item_view" />
 
     <TextView
-        android:id="@+id/recomendacao_lista_texctView_Qntcomprimidos"
+        android:id="@+id/recomendacao_lista_texctView_dose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -52,10 +52,10 @@
         android:layout_marginTop="8dp"
         android:text="Próximo Horário"
         app:layout_constraintStart_toStartOf="@+id/recomendacao_item_view"
-        app:layout_constraintTop_toBottomOf="@+id/recomendacao_lista_texctView_Qntcomprimidos" />
+        app:layout_constraintTop_toBottomOf="@+id/recomendacao_lista_texctView_dose" />
 
     <Button
-        android:id="@+id/recomendacao_lista_button_tomei"
+        android:id="@+id/recomendacao_lista_button_tomar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="6dp"
@@ -65,5 +65,36 @@
         app:layout_constraintEnd_toEndOf="@+id/recomendacao_item_view"
         app:layout_constraintTop_toTopOf="@+id/recomendacao_item_view"
         app:layout_constraintVertical_bias="0.519" />
+
+    <View
+        android:id="@+id/recomendacao_item_view2"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="#EABBBB"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recomendacao_item_view" />
+
+    <TextView
+        android:id="@+id/recomendacao_lista_texctView_dosesRestantes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Doses do Banco"
+        app:layout_constraintBottom_toBottomOf="@+id/recomendacao_item_view2"
+        app:layout_constraintEnd_toEndOf="@+id/recomendacao_item_view2"
+        app:layout_constraintStart_toStartOf="@+id/recomendacao_item_view2"
+        app:layout_constraintTop_toBottomOf="@+id/recomendacao_item_view"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

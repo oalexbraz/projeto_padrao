@@ -5,16 +5,24 @@ import android.util.Log;
 import android.widget.ListView;
 
 
+import androidx.annotation.NonNull;
+
 import com.orm.SugarRecord;
 import com.projeto_padrao.activities.remedio.RecomendacaoActivity;
 import com.projeto_padrao.adapters.RecomendacaoAdpater;
 import com.projeto_padrao.api.retrofit.RetrofitConfig;
+import com.projeto_padrao.models.Aplicacao;
 import com.projeto_padrao.models.Usuario;
+import com.projeto_padrao.statics.ConstantesGlobais;
+
+import java.net.CookieHandler;
+import java.util.Calendar;
 
 
 import org.jetbrains.annotations.NotNull;
 
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -29,7 +37,18 @@ public class Recomendacao extends SugarRecord {
     private Long usuario;
     private Date ultima_hora_que_tomou;
     private int quantidade_restante;
- 
+    private Date proximo_horario;
+
+
+
+
+    public Date getProximo_horario() {
+        return proximo_horario;
+    }
+
+    public void setProximo_horario(Date proximo_horario) {
+        this.proximo_horario = proximo_horario;
+    }
 
     public Date getUltima_hora_que_tomou() {
         return ultima_hora_que_tomou;
@@ -103,6 +122,31 @@ public class Recomendacao extends SugarRecord {
 
     }
 
+    public void editarRecomendacao(@NotNull String key) {
+        Call<Recomendacao> call = new RetrofitConfig().setRecomendacaoService().editarRecomendacao("Token " + key, this.getId(), this);
+        call.enqueue(new Callback<Recomendacao>() {
+
+            @Override
+            public void onResponse(@NonNull Call<Recomendacao> call, @NonNull Response<Recomendacao> response) {
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        Recomendacao recomendacao = response.body();
+
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Recomendacao> call, Throwable t) {
+                Log.e("retrofit", "Erro ao enviar o usuario:" + t.getMessage());
+            }
+
+
+        });
+    }
+
+
 
     public List<Recomendacao> listarRecomendacaoDoBanco() {
 
@@ -110,42 +154,6 @@ public class Recomendacao extends SugarRecord {
 
     }
 
-
-    public int getQnt_comprimidos() {
-        return qnt_comprimidos;
-    }
-
-    public void setQnt_comprimidos(int qnt_comprimidos) {
-        this.qnt_comprimidos = qnt_comprimidos;
-    }
-
-    public String getHorario_tomei(Date date) {
-       return null;
-    }
-
-    public String getHorario_inicial() {
-        return horario_inicial;
-    }
-
-    public void setHorario_inicial(String horario_inicial) {
-        this.horario_inicial = horario_inicial;
-    }
-
-    public String getPrxHorario() {
-        return prxHorario;
-    }
-
-    public void setPrxHorario(String prxHorario) {
-        this.prxHorario = prxHorario;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
 
 
 
@@ -158,13 +166,6 @@ public class Recomendacao extends SugarRecord {
         this.intervalo = intervalo;
     }
 
-    public int getDose() {
-        return dose;
-    }
-
-    public void setDose(int dose) {
-        this.dose = dose;
-    }
 
     public Long getRemedio() {
         return remedio;

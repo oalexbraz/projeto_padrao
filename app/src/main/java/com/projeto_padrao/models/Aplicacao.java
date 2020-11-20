@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.projeto_padrao.R;
 import com.projeto_padrao.activities.AppActivity;
 import com.projeto_padrao.activities.autenticacao.LoginActivity;
 import com.projeto_padrao.activities.autenticacao.RegisterActivity;
@@ -11,6 +12,11 @@ import com.projeto_padrao.activities.remedio.RecomendacaoActivity;
 import com.projeto_padrao.activities.tarefa.ListarTarefasActivity;
 import com.projeto_padrao.activities.usuario.ListarUsuariosActivity;
 import com.projeto_padrao.activities.usuario.UsuarioDetalheActivity;
+
+import java.text.BreakIterator;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 
 public class Aplicacao {
@@ -69,6 +75,21 @@ public class Aplicacao {
         b.putLong("id", id);
         intent.putExtras(b);
         context.startActivity(intent);
+    }
+
+    public static void veritificarHorario() {
+
+        Calendar calender = Calendar.getInstance();
+        System.out.println("Current time => "+calender.getTime());
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        String formattedDate = df.format(calender.getTime());
+        String dateandtimeTextView;
+        dateandtimeTextView.setText("" +formattedDate);
+
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z");
+        String currentDateandTime = sdf.format(new Date());
+
     }
 
 

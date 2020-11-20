@@ -7,7 +7,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+
 import com.projeto_padrao.R;
+import com.projeto_padrao.models.Aplicacao;
 import com.projeto_padrao.models.Usuario;
 import com.projeto_padrao.models.remedio.Recomendacao;
 import com.projeto_padrao.models.remedio.Remedio;
@@ -65,23 +67,35 @@ public class RecomendacaoAdpater extends BaseAdapter {
 
 
             holder = new RecomendacaoAdpater.ListContent();
+            //View
             holder.recomendacao_item_view = (View) v.findViewById(R.id.recomendacao_item_view);
+            holder.recomendacao_item_view2 = (View) v.findViewById(R.id.recomendacao_item_view2);
+            //TextView
             holder.recomendacao_lista_texctView_nomeRemedio = (TextView) v.findViewById(R.id.recomendacao_lista_texctView_nomeRemedio);
-            holder.recomendacao_lista_texctView_Qntcomprimidos = (TextView) v.findViewById(R.id.recomendacao_lista_texctView_Qntcomprimidos);
+            //holder.recomendacao_lista_texctView_dose = (TextView) v.findViewById(R.id.recomendacao_lista_texctView_dose)
             holder.recomendacao_lista_texctView_prxdose = (TextView) v.findViewById(R.id.recomendacao_lista_texctView_prxdose);
-            holder.recomendacao_lista_button_tomei = (Button) v.findViewById(R.id.recomendacao_lista_button_tomei);
+            holder.recomendacao_lista_texctView_dosesRestantes = (TextView) v.findViewById(R.id.recomendacao_lista_texctView_dosesRestantes);
+            //Button
+            holder.recomendacao_lista_button_tomar = (Button) v.findViewById(R.id.recomendacao_lista_button_tomar);
 
-
-            holder.recomendacao_lista_button_tomei.setOnClickListener(new View.OnClickListener() {
+            // -----------------  Botão Tomar ------------------------ //
+            holder.recomendacao_lista_button_tomar.setOnClickListener(new View.OnClickListener() {
 
                 @Override
                 public void onClick(View view) {
-                    recomendacao.setPrxHorario(String.valueOf(Calendar.getInstance().getTime()));
-                    recomendacao.save();
-                    holder.recomendacao_lista_texctView_prxdose.setText(meuRemedio.getNome() + "10" + " mg");
+
+                    holder.recomendacao_lista_texctView_prxdose.setText(String.valueOf());
+
+                    //verificarHorario
+                    //setarHorarioNaRecomendacao
+
+
+                    recomendacao.editarRecomendacao(usuarioLogado.getKey());
 
 
                 }
+                // -----------------  Fim do Botão TOMAR ------------------------ //
+
             });
 
 
@@ -89,13 +103,13 @@ public class RecomendacaoAdpater extends BaseAdapter {
         } else {
             holder = (RecomendacaoAdpater.ListContent) v.getTag();
         }
-
+        //Nome do Rémedio
         if (meuRemedio != null){
-            holder.recomendacao_lista_texctView_nomeRemedio.setText((meuRemedio.getNome() + "10" + " mg"));
+            holder.recomendacao_lista_texctView_nomeRemedio.setText((meuRemedio.getNome() + " " + meuRemedio.getMg() + "mg"));
 
         }
-        holder.recomendacao_lista_texctView_Qntcomprimidos.setText(String.valueOf("Tomar: " +  recomendacao.getQnt_comprimidos() + " " + "Comprimidos"));
 
+        holder.recomendacao_lista_texctView_dosesRestantes.setText(String.valueOf("Faltam " + recomendacao.getQuantidade_restante() + " Doses"));
 
         return v;
     }
@@ -106,7 +120,10 @@ public class RecomendacaoAdpater extends BaseAdapter {
         TextView recomendacao_lista_texctView_nomeRemedio;
         TextView recomendacao_lista_texctView_Qntcomprimidos;
         TextView recomendacao_lista_texctView_prxdose;
-        Button recomendacao_lista_button_tomei;
+        View recomendacao_item_view2;
+        //TextView  recomendacao_lista_texctView_dose;
+        TextView recomendacao_lista_button_tomar;
+        TextView recomendacao_lista_texctView_dosesRestantes;
 
     }
 }
