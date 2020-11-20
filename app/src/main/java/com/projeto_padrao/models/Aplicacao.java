@@ -3,8 +3,8 @@ package com.projeto_padrao.models;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
-import com.projeto_padrao.R;
 import com.projeto_padrao.activities.AppActivity;
 import com.projeto_padrao.activities.autenticacao.LoginActivity;
 import com.projeto_padrao.activities.autenticacao.RegisterActivity;
@@ -13,13 +13,14 @@ import com.projeto_padrao.activities.tarefa.ListarTarefasActivity;
 import com.projeto_padrao.activities.usuario.ListarUsuariosActivity;
 import com.projeto_padrao.activities.usuario.UsuarioDetalheActivity;
 
-import java.text.BreakIterator;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 
 public class Aplicacao {
+
+    String currentDateTimeString = java.text.DateFormat.getDateTimeInstance().format(new Date());
 
     private Context context;
     private Class<?> activityDestino;
@@ -77,18 +78,12 @@ public class Aplicacao {
         context.startActivity(intent);
     }
 
-    public static void veritificarHorario() {
+    public static String veritificarHorario() {
 
-        Calendar calender = Calendar.getInstance();
-        System.out.println("Current time => "+calender.getTime());
-        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-        String formattedDate = df.format(calender.getTime());
-        String dateandtimeTextView;
-        dateandtimeTextView.setText("" +formattedDate);
+        String date = new SimpleDateFormat("yyyy-MM-ddTHH:mm:ss").format(Calendar.getInstance().getTime());
 
-
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z");
-        String currentDateandTime = sdf.format(new Date());
+        Log.d("Testedata", "Data testada");
+        return date;
 
     }
 

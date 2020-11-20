@@ -35,7 +35,7 @@ public class Recomendacao extends SugarRecord {
     private Long remedio;
     private String intervalo;
     private Long usuario;
-    private Date ultima_hora_que_tomou;
+    private String ultima_hora_que_tomou;
     private int quantidade_restante;
     private Date proximo_horario;
 
@@ -50,11 +50,12 @@ public class Recomendacao extends SugarRecord {
         this.proximo_horario = proximo_horario;
     }
 
-    public Date getUltima_hora_que_tomou() {
+
+    public String getUltima_hora_que_tomou() {
         return ultima_hora_que_tomou;
     }
 
-    public void setUltima_hora_que_tomou(Date ultima_hora_que_tomou) {
+    public void setUltima_hora_que_tomou(String ultima_hora_que_tomou) {
         this.ultima_hora_que_tomou = ultima_hora_que_tomou;
     }
 
@@ -81,7 +82,7 @@ public class Recomendacao extends SugarRecord {
     }
 
 
-    public Recomendacao(Long remedio, String intervalo, Long usuario, Date ultima_hora_que_tomou, int quantidade_restante) {
+    public Recomendacao(Long remedio, String intervalo, Long usuario, String ultima_hora_que_tomou, int quantidade_restante) {
         this.remedio = remedio;
         this.intervalo = intervalo;
         this.usuario = usuario;

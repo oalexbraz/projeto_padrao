@@ -14,7 +14,6 @@ import com.projeto_padrao.models.Usuario;
 import com.projeto_padrao.models.remedio.Recomendacao;
 import com.projeto_padrao.models.remedio.Remedio;
 
-import java.util.Calendar;
 import java.util.List;
 
 public class RecomendacaoAdpater extends BaseAdapter {
@@ -84,9 +83,10 @@ public class RecomendacaoAdpater extends BaseAdapter {
                 @Override
                 public void onClick(View view) {
 
-                    holder.recomendacao_lista_texctView_prxdose.setText(String.valueOf());
+                    String date = Aplicacao.veritificarHorario();
 
-                    //verificarHorario
+                    recomendacao.setUltima_hora_que_tomou(date);
+
                     //setarHorarioNaRecomendacao
 
 
