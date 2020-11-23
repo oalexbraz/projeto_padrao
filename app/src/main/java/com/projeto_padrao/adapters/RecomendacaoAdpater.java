@@ -14,7 +14,12 @@ import com.projeto_padrao.models.Usuario;
 import com.projeto_padrao.models.remedio.Recomendacao;
 import com.projeto_padrao.models.remedio.Remedio;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+
+import static com.projeto_padrao.activities.remedio.RecomendacaoActivity.recomendacao_lista_listview;
 
 public class RecomendacaoAdpater extends BaseAdapter {
 
@@ -85,12 +90,20 @@ public class RecomendacaoAdpater extends BaseAdapter {
 
                     String date = Aplicacao.veritificarHorario();
 
+                   // SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                    //try {
+                    //    Date novaData = formato.parse(date);
+                    //} catch (ParseException e) {
+                     //   e.printStackTrace();
+                    //}
+
                     recomendacao.setUltima_hora_que_tomou(date);
 
-                    //setarHorarioNaRecomendacao
+                    recomendacao.editarRecomendacao(usuarioLogado.getKey(),context,recomendacao_lista_listview);
+
+                    holder.recomendacao_lista_texctView_prxdose.setText(String.valueOf("Próximo Horário: " + recomendacao.getProximo_horario()));
 
 
-                    recomendacao.editarRecomendacao(usuarioLogado.getKey());
 
 
                 }
@@ -108,8 +121,8 @@ public class RecomendacaoAdpater extends BaseAdapter {
             holder.recomendacao_lista_texctView_nomeRemedio.setText((meuRemedio.getNome() + " " + meuRemedio.getMg() + "mg"));
 
         }
-
         holder.recomendacao_lista_texctView_dosesRestantes.setText(String.valueOf("Faltam " + recomendacao.getQuantidade_restante() + " Doses"));
+        holder.recomendacao_lista_texctView_prxdose.setText(String.valueOf("Próximo Horário: " + recomendacao.getProximo_horario()));
 
         return v;
     }
@@ -126,6 +139,8 @@ public class RecomendacaoAdpater extends BaseAdapter {
         TextView recomendacao_lista_texctView_dosesRestantes;
 
     }
+
+
 }
 
 

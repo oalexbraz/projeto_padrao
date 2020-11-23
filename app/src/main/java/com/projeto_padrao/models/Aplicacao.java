@@ -80,11 +80,11 @@ public class Aplicacao {
 
     public static String veritificarHorario() {
 
-        String date = new SimpleDateFormat("yyyy-MM-ddTHH:mm:ss").format(Calendar.getInstance().getTime());
-
+        String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
         Log.d("Testedata", "Data testada");
-        return date;
 
+
+        return date;
     }
 
 

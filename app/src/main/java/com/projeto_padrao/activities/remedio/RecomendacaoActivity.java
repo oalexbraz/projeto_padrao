@@ -15,7 +15,7 @@ import com.projeto_padrao.models.remedio.Remedio;
 public class RecomendacaoActivity extends AppCompatActivity {
 
     private View meusRemedios_view_remedios;
-    private ListView recomendacao_lista_listview;
+    public static ListView recomendacao_lista_listview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
