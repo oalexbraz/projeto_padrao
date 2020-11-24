@@ -106,7 +106,11 @@ public class Recomendacao extends SugarRecord {
                             recomendacao1.save();
                         }
                     }
+                    if (recomendacaos == null){
 
+                        Aplicacao.irParaNaoUsuarioActivity(context);
+
+                    }
 
                     Log.d("listarRecomendacao", "listar");
 

@@ -17,6 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="n">
+        <activity android:name=".activities.remedio.NaoUsuarioActivity"></activity>
         <activity android:name=".activities.tarefa.TarefaDetalheActivity" />
 
         <meta-data
@@ -45,7 +46,6 @@
             android:name=".activities.AppActivity"
             android:theme="@style/TemaApp" />
         <activity android:name=".activities.remedio.RecomendacaoActivity" />
-
         <activity android:name=".activities.tarefa.ListarTarefasActivity" />
         <activity android:name=".activities.usuario.UsuarioDetalheActivity" />
         <activity android:name=".activities.usuario.ListarUsuariosActivity" />
